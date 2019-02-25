@@ -1,0 +1,8 @@
+body{
+    background:url()no-repeat center center fixed;
+    display:table;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    position: relative;
+}
