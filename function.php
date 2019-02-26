@@ -105,7 +105,7 @@ function village(){
                         $post_title     =$run_post['post_title'];
                         $post_content   =substr($run_post['post_content'],0,150);
 
-                    $like="SELECT post_id, SUM(`user_like`) AS user_like,sum(`user_unlike`)AS user_unlike FROM `like` GROUP BY `post_id`='$post_id'";
+                    $like="SELECT post_id, SUM(`user_like`) AS user_like,sum(`user_unlike`)AS user_unlike FROM `like` WHERE `post_id`='$post_id' GROUP BY `post_id`";
 
                             
                     $run_like=mysqli_query($con,$like);
@@ -317,7 +317,7 @@ function home(){
                         $post_title     =$run_post['post_title'];
                         $post_content   =substr($run_post['post_content'],0,150);
 
-                        $like="SELECT post_id, SUM(`user_like`) AS user_like,sum(`user_unlike`)AS user_unlike FROM `like` GROUP BY `post_id`='$post_id'";
+                        $like="SELECT post_id, SUM(`user_like`) AS user_like,sum(`user_unlike`)AS user_unlike FROM `like` WHERE `post_id`='$post_id' GROUP BY `post_id`";
 
                             
                     $run_like=mysqli_query($con,$like);
@@ -393,7 +393,7 @@ function city(){
                         $post_content   =substr($run_post['post_content'],0,150);
 
 
-                        $like="SELECT post_id,SUM(`user_like`) AS user_like,SUM(`user_unlike`) AS user_unlike FROM `like` GROUP BY `post_id`='$post_id'";
+                        $like="SELECT post_id, SUM(`user_like`) AS user_like,sum(`user_unlike`)AS user_unlike FROM `like` WHERE `post_id`='$post_id' GROUP BY `post_id`";
 
                             
                         $run_like=mysqli_query($con,$like);
