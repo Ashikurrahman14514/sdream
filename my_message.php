@@ -10,6 +10,7 @@ include("function.php");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ashikshetu</title>
 
+
     <link rel="stylesheet" href="style/style2.css">
     <link rel="stylesheet" href="bootstrap4/bootstrap4.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -49,7 +50,7 @@ include("function.php");
              <li style='list-style: none;'><a style="color:white;" href="city.php?country=<?php echo $user_country;
              ?>&city=<?php echo $user_city;
              ?>"><i class="fa fa-building fa-lg"></i></a></li>
-            <li style='list-style: none;'><a style="color:white;" href="village.php?country=<?php echo $user_country;
+              <li style='list-style: none;'><a style="color:white;" href="village.php?country=<?php echo $user_country;
              ?>&city=<?php echo $user_city;
              ?>&village=<?php echo $user_village;
              ?>"><i  class="fa fa-child fa-lg"></i></a></li>
@@ -58,18 +59,60 @@ include("function.php");
             aria-hidden="true"></i></a></li>
         </div>
     </nav>
-
-    <div class="jumbotron jumbotron-fluid">
-        
+       <div class="jumbotron jumbotron-fluid">
         <div class="container">
-             <div class='alert alert-success py-4'>
-             
-                    <h2>Vote complited!</h2>
-            </div>
+        <div class="row">
+            <div class="col-lg-6">
+            <div class="text-center bg-primary text-white py-1"><h2>Send</h2></div>
+            <?php function send(){
+                global $user_id;
+                global $con;
+$send_msg="SELECT * FROM `message` WHERE `sender_id`='$user_id' ORDER BY 1 DESC LIMIT 10";
+$run_msg=mysqli_query($con,$send_msg);
+$count_msg=mysqli_num_rows($run_msg);
+while ($row_msg=mysqli_fetch_array($run_msg)) {
+    $msg_contant=$row_msg['message'];
+    $msg_date=$row_msg['send_time'];
+    $res_id=$row_msg['receiver_id'];
 
+    $res="SELECT * FROM `users` WHERE `id`='$res_id'";
+    $res_msgr=mysqli_query($con,$res);
+    $row_res=mysqli_fetch_array($res_msgr);
+    $res_namef=$row_res['firstname'];
+    $res_namel=$row_res['lastname'];
+
+echo"<p class='mb-2'>$msg_contant <strong><a href='x_user.php?u_id=$res_id' class='btn-outline-success px-0' aria-pressed='true'>: $res_namef $res_namel</a></strong></p>";
+}
+}
+send();?>
+            </div>
+            <div class="col-lg-6">
+            <div class="text-center bg-success text-white py-1"><h2>Received</h2></div>
+            <?php function resiver(){
+                global $user_id;
+                global $con;
+$send_msg="SELECT * FROM `message` WHERE `receiver_id`='$user_id' ORDER BY 1 DESC LIMIT 10";
+$run_msg=mysqli_query($con,$send_msg);
+$count_msg=mysqli_num_rows($run_msg);
+while ($row_msg=mysqli_fetch_array($run_msg)) {
+    $msg_contant=$row_msg['message'];
+    $msg_date=$row_msg['send_time'];
+    $res_id=$row_msg['sender_id'];
+
+    $res="SELECT * FROM `users` WHERE `id`='$res_id'";
+    $res_msgr=mysqli_query($con,$res);
+    $row_res=mysqli_fetch_array($res_msgr);
+    $res_namef=$row_res['firstname'];
+    $res_namel=$row_res['lastname'];
+
+echo"<p class='mb-2'>$msg_contant <strong><a href='x_user.php?u_id=$res_id' class='btn-outline-primary px-0' aria-pressed='true'>: $res_namef $res_namel</a></strong></p>";
+}
+}
+resiver();?>
+            </div>
         </div>
-       
     </div>
+</div>
 
 </body>
 <script src="bootstrap4/jquery.js"></script>

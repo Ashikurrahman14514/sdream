@@ -8,7 +8,7 @@ include("function.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Ashikshetu</title>
 
     <link rel="stylesheet" href="style/style2.css">
     <link rel="stylesheet" href="bootstrap4/bootstrap4.css">
@@ -52,6 +52,7 @@ include("function.php");
              ?>&city=<?php echo $user_city;
              ?>&village=<?php echo $user_village;
              ?>"><i  class="fa fa-child fa-lg"></i></a></li>
+             <li style='list-style: none;'><a style="color:white;" href="my_message.php?"<i  class="fa fa-envelope fa-lg"></i></a></li>
             <li style='list-style: none;'><a style="color:white;" href="profile.php"><i class="fa fa-address-book fa-lg	"
             aria-hidden="true"></i></a></li>
         </div>

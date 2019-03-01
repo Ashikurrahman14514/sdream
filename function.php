@@ -20,9 +20,6 @@ $birthday=$row['birthday'];
 
 
 echo"<div class='container'>
-
-            
-
             <div class='span'>
                 
                 <img src='img/$image' width='300'>
@@ -41,46 +38,6 @@ echo"<div class='container'>
 }    
 
 }
-
-function masg(){
-        
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function village(){
 
     
@@ -125,34 +82,30 @@ function village(){
                         $user_image         =$row_user['image'];
 
 
-                        echo"<div class='post row py-1'>
+                        echo"<div class='jumbotron jumbotron-fluid mb-2 py-3'>
+                                <div class='container py-0'>
+                                <div class='post row'>
                                 <div class='col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1'>
                                     <img src='img/$user_image' width='60' height='60'>
                                 </div>
-                                <div class='col-4 col-sm-7 col-md-8 col-lg-9 col-xl-9 px-0'>
-                                    <h6><a href='x_user.php?u_id=$user_id' class='btn-outline-success px-0' aria-pressed='true'>$user_firstname $user_lastname</a></h6>                     
-                                   
-                                </div>
-                                <div class='col-5 col-sm-3 col-md-2 col-lg-2 col-xl-2 px-0'>
-                                    <p>UID:$user_id</p>
-                                    <p>PID:$post_id</p>
+                                <div>
+                                    <h6><a href='x_user.php?u_id=$user_id' class='btn-outline-success px-0' aria-pressed='true'>$user_firstname $user_lastname</a></h6>                     <p>$post_date</p>
                                 </div>
                                 <p ><img src='postimg/$post_image' class='img-fluid'></p>
-                                <h6 class='mx-1 my-1'><strong>$post_title</strong></h6>
+                                <h6 class='mx-1 my-0'>
+                                <strong>$post_title</strong></h6>
                                 <p class='mx-1 my-1'>$post_content</p>
                                 <a href='single_post.php?post_id=$post_id' class='badge badge-pill badge-dark'>. . more</a> 
                             </div>
                             <hr>
-                            <div class='btn-group btn-block'>
-
+                            <div class='btn-group btn-block py-0'>
                             <a href='vote.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-success px-4' role='button' aria-pressed='true'>VOTE $user_like</a>
-
                             <a href='vato.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-danger px-4' role='button' aria-pressed='true'>VATO $user_unlike</a>
-
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary' role='button' aria-pressed='true'>Comment</a>
-
                             </div>
-                            <hr>";
+                            </div>
+    </div>";
+
 
                     }
                 }
@@ -305,7 +258,7 @@ function home(){
     }
                     
                 
-        $get_post = "SELECT * FROM `posts` WHERE `user_country`='$country' AND `post_position`=3 ORDER BY 1 DESC LIMIT 20";
+        $get_post = "SELECT * FROM `posts` WHERE `user_country`='$country' AND `post_position`=1 ORDER BY 1 DESC LIMIT 20";
                     $runs_post=mysqli_query($con,$get_post);
 
                     while($run_post=mysqli_fetch_array($runs_post)) {
@@ -337,35 +290,30 @@ function home(){
                         $user_image         =$row_user['image'];
 
 
-                        echo"<div class='post row py-4'>
+                        echo"<div class='jumbotron jumbotron-fluid mb-2 py-3'>
+                                <div class='container py-0'>
+                                <div class='post row'>
                                 <div class='col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1'>
                                     <img src='img/$user_image' width='60' height='60'>
                                 </div>
-                                <div class='col-4 col-sm-7 col-md-8 col-lg-9 col-xl-9 px-0'>
-                                    <h6><a href='x_user.php?u_id=$user_id' class='btn-outline-success px-0' aria-pressed='true'>$user_firstname $user_lastname</a></h6>                    
-                                    <p>$post_date</p>
-                                </div>
-                                <div class='col-5 col-sm-3 col-md-2 col-lg-2 col-xl-2 px-0'>
-                                    <p>UID:$user_id</p>
-                                    <p>PID:$post_id</p>
+                                <div>
+                                    <h6><a href='x_user.php?u_id=$user_id' class='btn-outline-success px-0' aria-pressed='true'>$user_firstname $user_lastname</a></h6>                     <p>$post_date</p>
                                 </div>
                                 <p ><img src='postimg/$post_image' class='img-fluid'></p>
-                                <h6 class='mx-1 my-1'><strong>$post_title</strong></h6>
+                                <h6 class='mx-1 my-0'>
+                                <strong>$post_title</strong></h6>
                                 <p class='mx-1 my-1'>$post_content</p>
-                                <a href='single_post.php?post_id=$post_id' class='badge badge-pill badge-dark'>. . more</a>
-                               
+                                <a href='single_post.php?post_id=$post_id' class='badge badge-pill badge-dark'>. . more</a> 
                             </div>
                             <hr>
-                            <div class='btn-group btn-block'>
-
+                            <div class='btn-group btn-block py-0'>
                             <a href='vote.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-success px-4' role='button' aria-pressed='true'>VOTE $user_like</a>
-
                             <a href='vato.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-danger px-4' role='button' aria-pressed='true'>VATO $user_unlike</a>
-
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary' role='button' aria-pressed='true'>Comment</a>
-
                             </div>
-                            <hr>";
+                            </div>
+    </div>";
+
                     }
                 }
 
@@ -380,11 +328,10 @@ function city(){
     }
                     
                 
-        $get_post = "SELECT * FROM `posts` WHERE `user_country`='$country' AND`user_city`='$city' AND `post_position`=2 ORDER BY 1 DESC LIMIT 20";
+        $get_post = "SELECT * FROM `posts` WHERE `user_country`='$country' AND`user_city`='$city' AND `post_position`=1 ORDER BY 1 DESC LIMIT 20";
                     $runs_post=mysqli_query($con,$get_post);
 
                     while($run_post=mysqli_fetch_array($runs_post)) {
-
                         $post_id        =$run_post['post_id'];
                         $user_id        =$run_post['user_id'];
                         $post_date      =$run_post['post_date'];
@@ -392,18 +339,14 @@ function city(){
                         $post_title     =$run_post['post_title'];
                         $post_content   =substr($run_post['post_content'],0,150);
 
-
                         $like="SELECT post_id, SUM(`user_like`) AS user_like,sum(`user_unlike`)AS user_unlike FROM `like` WHERE `post_id`='$post_id' GROUP BY `post_id`";
-
-                            
+        
                         $run_like=mysqli_query($con,$like);
                         $row_like=mysqli_fetch_array($run_like);
 
                         $user_like        =$row_like['user_like'];
                         $user_unlike      =$row_like['user_unlike'];
-
-
-                            
+  
                         $user2="SELECT * FROM `users` WHERE id ='$user_id' AND posts='yes'";
                         $run_user=mysqli_query($con,$user2);
                         $row_user=mysqli_fetch_array($run_user);
@@ -412,39 +355,29 @@ function city(){
                         $user_lastname      =$row_user['lastname'];
                         $user_image         =$row_user['image'];
 
-
-
-                        echo"<div class='post row py-4'>
+                        echo"<div class='jumbotron jumbotron-fluid mb-2 py-3'>
+                            <div class='container py-0'>
+                            <div class='post row'>
                             <div class='col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1'>
                                 <img src='img/$user_image' width='60' height='60'>
                             </div>
-                            <div class='col-4 col-sm-7 col-md-8 col-lg-9 col-xl-9 px-0'>
-                                <h6><a href='x_user.php?u_id=$user_id' class='btn-outline-success px-0' aria-pressed='true'>$user_firstname $user_lastname</a></h6>                     
-                                <p>$post_date</p>
-                            </div>
-                            <div class='col-5 col-sm-3 col-md-2 col-lg-2 col-xl-2 px-0'>
-                                <p>UID:$user_id</p>
-                                <p>PID:$post_id</p>
+                            <div>
+                                <h6><a href='x_user.php?u_id=$user_id' class='btn-outline-success px-0' aria-pressed='true'>$user_firstname $user_lastname</a></h6>                     <p>$post_date</p>
                             </div>
                             <p ><img src='postimg/$post_image' class='img-fluid'></p>
-                            <h6 class='mx-1 my-1'><strong>$post_title</strong></h6>
+                            <h6 class='mx-1 my-0'>
+                            <strong>$post_title</strong></h6>
                             <p class='mx-1 my-1'>$post_content</p>
-                            <a href='single_post.php?post_id=$post_id' class='badge badge-pill badge-dark'>. . more</a>
-                               
+                            <a href='single_post.php?post_id=$post_id' class='badge badge-pill badge-dark'>. . more</a> 
                             </div>
                             <hr>
-                            <div class='btn-group btn-block'>
-
+                            <div class='btn-group btn-block py-0'>
                             <a href='vote.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-success px-4' role='button' aria-pressed='true'>VOTE $user_like</a>
-
                             <a href='vato.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-danger px-4' role='button' aria-pressed='true'>VATO $user_unlike</a>
-
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary' role='button' aria-pressed='true'>Comment</a>
-
                             </div>
-                            <hr>";
-
-
+                            </div>
+                            </div>";
                     }
                 }
 
@@ -481,19 +414,19 @@ function position(){
 
         ";
     }
-                        } elseif ($user_likes>=50 AND $user_unlikes<=20) {
-                            $position_change="UPDATE `posts` SET `post_position`= 2 WHERE `post_id`='$post_id'";
+        } elseif ($user_likes>=50 AND $user_unlikes<=20) {
+            $position_change="UPDATE `posts` SET `post_position`= 2 WHERE `post_id`='$post_id'";
 
-                             $run_position =mysqli_query($con,$position_change);
-                        } elseif ($user_likes<=10 AND $user_unlikes>=5) {
-                            $position_change="UPDATE `posts` SET `post_position`= 1 WHERE `post_id`='$post_id'";
+                $run_position =mysqli_query($con,$position_change);
+        } elseif ($user_likes<=10 AND $user_unlikes>=5) {
+            $position_change="UPDATE `posts` SET `post_position`= 1 WHERE `post_id`='$post_id'";
 
-                             $run_position =mysqli_query($con,$position_change);
-                        } elseif ($user_likes>=100 AND $user_unlikes>=40) {
-                            $position_change="UPDATE `posts` SET `post_position`= 3 WHERE `post_id`='$post_id'";
-                            
-                            $run_position =mysqli_query($con,$position_change);
-                        }
+                $run_position =mysqli_query($con,$position_change);
+        } elseif ($user_likes>=100 AND $user_unlikes>=40) {
+            $position_change="UPDATE `posts` SET `post_position`= 3 WHERE `post_id`='$post_id'";
+            
+            $run_position =mysqli_query($con,$position_change);
+        }
     }   
 position();
 ?>
