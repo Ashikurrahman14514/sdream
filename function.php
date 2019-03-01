@@ -131,7 +131,7 @@ function village(){
                                 </div>
                                 <div class='col-4 col-sm-7 col-md-8 col-lg-9 col-xl-9 px-0'>
                                     <h6><a href='x_user.php?u_id=$user_id' class='btn-outline-success px-0' aria-pressed='true'>$user_firstname $user_lastname</a></h6>                     
-                                    <p>$post_date</p>
+                                   
                                 </div>
                                 <div class='col-5 col-sm-3 col-md-2 col-lg-2 col-xl-2 px-0'>
                                     <p>UID:$user_id</p>
