@@ -13,14 +13,12 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <strong class="">Ashikshetu</strong>
             </a>
             <a href="index.php" class="btn btn-primary active" role="button">Back</a>
-
         </div>
     </nav>
     <section>
@@ -39,11 +37,9 @@
             <div class="col-md-12 mt-3">
                 <h2>Ashikshetu.com</h2>
                 <p>copyright <i class="fa fa-copyright"> Ashikshetu ltd.. All Rights Reserved.</i></p>
-
             </div>
         </div>
     </footer>
-
 </body>
 
 <script src="bootstrap4/jquery.js"></script>
