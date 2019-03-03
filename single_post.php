@@ -58,7 +58,7 @@ include("function.php");
         </div>
     </nav>
     
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid mt-4">
     
         <div class="container">
             <?php
