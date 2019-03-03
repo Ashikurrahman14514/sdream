@@ -17,7 +17,7 @@ include("includes/db_connection.php");
 
 <body>
 
- <nav class="navbar  navbar-fixed-top navbar-dark" style="background:#5A6268;border-bottom:50Px;">
+ <nav class="navbar  fixed-top navbar-dark" style="background:#5A6268;border-bottom:50Px;">
         <div class="container">
    <?php 
             $userprofile =$_SESSION['email'];

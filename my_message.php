@@ -19,7 +19,7 @@ include("function.php");
 
 <body>
 
-    <nav class="navbar  navbar-fixed-top navbar-dark" style="background:#5A6268;border-bottom:50Px;">
+    <nav class="navbar fixed-top navbar-dark" style="background:#5A6268;border-bottom:50Px;">
         <div class="container">
 
    <?php 
@@ -59,6 +59,7 @@ include("function.php");
             aria-hidden="true"></i></a></li>
         </div>
     </nav>
+     <section  class="mt-4 "> 
        <div class="jumbotron jumbotron-fluid">
         <div class="container">
         <div class="row">
@@ -113,7 +114,7 @@ resiver();?>
         </div>
     </div>
 </div>
-
+ </section> 
 </body>
 <script src="bootstrap4/jquery.js"></script>
 <script src="bootstrap4/popper.js"></script>

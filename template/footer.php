@@ -3,8 +3,8 @@
                 <div class="col-md-12 mt-3">
                 <h2>Ashikshetu.com</h2>
                 
-                <a name="" id="" class="btn btn-primary" href="#" role="button">Contact us</a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">About us</a>
+                <a class="btn btn-primary" href="contuct.php" role="button">Contact us</a>
+                <a class="btn btn-primary" href="about.php" role="button">About us</a>
                                 <p>copyright <i class="fa fa-copyright"> Ashikshetu ltd.. All Rights Reserved.</i></p>
 
                 </div>

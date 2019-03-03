@@ -18,7 +18,7 @@ include("function.php");
 
 <body>
 
-    <nav class="navbar  navbar-fixed-top navbar-dark" style="background:#5A6268;border-bottom:50Px;">
+    <nav class="navbar  fixed-top navbar-dark" style="background:#5A6268;border-bottom:50Px;">
         <div class="container">
    <?php 
             $userprofile =$_SESSION['email'];
@@ -57,14 +57,16 @@ include("function.php");
             aria-hidden="true"></i></a></li>
         </div>
     </nav>
-
-    <div class="jumbotron jumbotron-fluid mb-0 pt-2">
+ <section class="mt-4">
+    <div class="jumbotron jumbotron-fluid mb-0 pt-4">
         <div class="container">
         <a class="btn btn-primary pull-right " href="post.php?u_id=<?php echo$user_id;?>" role="button">Post</a>
         </div>
     </div>
+       </section>
+       <section >
             <?php home();   ?>
- 
+    </section> 
 
 </body>
 <script src="bootstrap4/jquery.js"></script>

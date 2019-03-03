@@ -218,7 +218,9 @@ function timeline(){
                         $user_image         =$row_user['image'];
 
 
-                        echo"<div class='post row py-4'>
+                        echo"<div class='jumbotron jumbotron-fluid pt-0 mb-2'>
+        <div class='container'>
+                        <div class='post row py-4'>
                                 <div class='col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1'>
                                     <img src='img/$user_image' width='60' height='60'>
                                 </div>
@@ -242,6 +244,9 @@ function timeline(){
                             
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary' role='button' aria-pressed='true'>Comment</a>
                             </div>
+                            </div>
+                            </div>
+
                             ";
                             include("delete_post.php");
 
@@ -332,7 +337,8 @@ function city(){
                     $runs_post=mysqli_query($con,$get_post);
 
                     while($run_post=mysqli_fetch_array($runs_post)) {
-                        $post_id        =$run_post['post_id'];
+
+                        $post_id       =$run_post['post_id'];
                         $user_id        =$run_post['user_id'];
                         $post_date      =$run_post['post_date'];
                         $post_image     =$run_post['post_image'];
@@ -346,7 +352,7 @@ function city(){
 
                         $user_like        =$row_like['user_like'];
                         $user_unlike      =$row_like['user_unlike'];
-  
+  position();
                         $user2="SELECT * FROM `users` WHERE id ='$user_id' AND posts='yes'";
                         $run_user=mysqli_query($con,$user2);
                         $row_user=mysqli_fetch_array($run_user);
@@ -386,40 +392,20 @@ include('vote.php');
 function position(){
     global $con;
     global $post_id;
-    $post_position="SELECT post_id,SUM(`user_like`) AS user_like,SUM(`user_unlike`) AS user_unlike FROM `like` GROUP BY `post_id`='$post_id'";
+    $post_position="SELECT post_id, SUM(`user_like`) AS user_like,sum(`user_unlike`)AS user_unlike FROM `like` WHERE `post_id`='102' GROUP BY `post_id`";
 
      $runs_post_position =mysqli_query($con,$post_position);
 
-                    $run_post_position  =mysqli_fetch_array($runs_post_position);
+    $run_post_position  =mysqli_fetch_array($runs_post_position);
 
-                        $user_likes        =$run_post_position['user_like'];
-                        $user_unlikes        =$run_post_position['user_unlike'];
-                        if ($user_likes<=5 AND $user_unlikes>=5) {
-                            $position_change="UPDATE `posts` SET `post_position`= 2 WHERE `post_id`='$post_id'";
-
-                             $run_position =mysqli_query($con,$position_change);
-                              if($run_position){
-
-      echo" <div class='alert alert-success mt-2'>
-        Hi,<strong> </strong>
-        congratulations.registration is almost complete.Please check your email for final verification.
-        </div>";
-
-    }
-    else{
-        echo"
-        <div class='alert alert-danger mt-2'>
-        <strong>Registration failed,try again!</strong>
-        </div>
-
-        ";
-    }
-        } elseif ($user_likes>=50 AND $user_unlikes<=20) {
+        $user_likes        =$run_post_position['user_like']; 
+        $user_unlikes        =$run_post_position['user_unlike'];
+        if ($user_likes<=10 AND $user_unlikes>=5) {
             $position_change="UPDATE `posts` SET `post_position`= 2 WHERE `post_id`='$post_id'";
 
                 $run_position =mysqli_query($con,$position_change);
-        } elseif ($user_likes<=10 AND $user_unlikes>=5) {
-            $position_change="UPDATE `posts` SET `post_position`= 1 WHERE `post_id`='$post_id'";
+        } elseif ($user_likes>=50 AND $user_unlikes<=20) {
+            $position_change="UPDATE `posts` SET `post_position`= 2 WHERE `post_id`='$post_id'";
 
                 $run_position =mysqli_query($con,$position_change);
         } elseif ($user_likes>=100 AND $user_unlikes>=40) {
@@ -428,5 +414,5 @@ function position(){
             $run_position =mysqli_query($con,$position_change);
         }
     }   
-position();
+
 ?>

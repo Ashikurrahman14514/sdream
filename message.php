@@ -14,7 +14,7 @@ include("function.php");
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<nav class="navbar navbar-fixed-top navbar-dark" style="background:#5A6268;border-bottom:50Px;">
+<nav class="navbar fixed-top navbar-dark" style="background:#5A6268;border-bottom:50Px;">
         <div class="container">
    <?php 
             $userprofile =$_SESSION['email'];
@@ -52,7 +52,7 @@ include("function.php");
             aria-hidden="true"></i></a></li>
         </div>
     </nav>
-
+<section  class="mt-4 ">
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
         <?php if(isset($_GET['u_id'])){
@@ -71,14 +71,14 @@ include("function.php");
                 <div class='form-group'>
                     <h6>Send a message to <?php echo $sender_firstname;?> <?php echo$sender_lastname;?></h6>
                     <textarea class='form-control' name='text'rows='5' placeholder='message ....'
-                        required='1'></textarea>
+                       maxlength="600" required='1'></textarea>
                 </div>
                 <div class='form-group'>
                     <input name='message' class='btn btn-primary pull-right' type='submit' value='Send'>
                 </div>
         </form>
         <?php if(isset($_POST['message'])){
-           $msgs=$_POST['text'];
+           $msgs=htmlspecialchars($_POST['text']);
 
             $insert="INSERT INTO `message`(`sender_id`, `receiver_id`, `message`, `status`, `send_time`, `reply`) VALUES ('$user_id','$u_id','$msgs','unread',NOW(),'no_reply')";
 
@@ -146,6 +146,7 @@ resiver();?>
         </div>
     </div>
 </div>
+</section>
 </body>
 <script src="bootstrap4/jquery.js"></script>
 <script src="bootstrap4/popper.js"></script>
