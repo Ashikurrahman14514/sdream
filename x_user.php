@@ -43,7 +43,7 @@ include("function.php");
             $user_reg_date    =$row['reg_date'];
 
             ?>
- <li style='list-style: none;'><a style="color:white;" href="home.php?country=<?php echo $user_country;
+<li style='list-style: none;'><a style="color:white;" href="home.php?country=<?php echo $user_country;
              ?>"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
              <li style='list-style: none;'><a style="color:white;" href="city.php?country=<?php echo $user_country;
              ?>&city=<?php echo $user_city;
@@ -52,6 +52,7 @@ include("function.php");
              ?>&city=<?php echo $user_city;
              ?>&village=<?php echo $user_village;
              ?>"><i class="fa fa-child fa-lg"></i></a></li>
+             <li style='list-style: none;'><a style="color:white;" href="my_message.php?"<i  class="fa fa-envelope fa-lg"></i></a></li>
             <li style='list-style: none;'><a style="color:white;" href="profile.php"><i class="fa fa-address-book fa-lg	"
             aria-hidden="true"></i></a></li>
         </div>

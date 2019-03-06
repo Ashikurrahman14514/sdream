@@ -1,7 +1,6 @@
 <?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,12 +35,11 @@
         <div class="row">
             <div class="col-md-12 mt-3">
                 <h2>Ashikshetu.com</h2>
-                <p>copyright <i class="fa fa-copyright"> Ashikshetu ltd.. All Rights Reserved.</i></p>
+                <p>copyright <i class="fa fa-copyright"> Ashikshetu ltd.. All Rights Reserved.</i><p>
             </div>
         </div>
     </footer>
 </body>
-
 <script src="bootstrap4/jquery.js"></script>
 <script src="bootstrap4/popper.js"></script>
 <script src="bootstrap4/bootstrap4.js"></script>

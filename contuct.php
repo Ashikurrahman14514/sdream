@@ -42,4 +42,4 @@
 <script src="bootstrap4/popper.js"></script>
 <script src="bootstrap4/bootstrap4.js"></script>
 <script>
-    < /html>
+</html>
