@@ -44,14 +44,14 @@ if(isset($_POST["submit"])){
 
       echo" <div class='alert alert-success mt-2'>
         Hi,<strong> $firstname $lastname</strong>
-        congratulations.registration is almost complete.Please check your email for final verification.
+        Congratulations.registration is almost complete.Please check your email (spam box) for final verification.
         </div>";
 
     }
     else{
         echo"
         <div class='alert alert-danger mt-2'>
-        <strong>Registration failed,try again!</strong>
+        <strong>Registration failed.Try again!</strong>
         </div>
 
         ";

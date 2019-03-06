@@ -68,11 +68,17 @@ function village(){
                     $run_like=mysqli_query($con,$like);
                     $row_like=mysqli_fetch_array($run_like);
 
-                        $user_like =$row_like['user_like'];
-                       $user_unlike  =$row_like['user_unlike'];
+                    $user_like =$row_like['user_like'];
+                    $user_unlike  =$row_like['user_unlike'];
 
-
-                        
+                    if ($user_like>=10 AND $user_unlike<=5) {
+                             $position_change="UPDATE `posts` SET `post_position`= 2 WHERE `post_id`='$post_id'";
+                             $rposition =mysqli_query($con,$position_change);
+                        }elseif ($user_like>=5 AND $user_unlike<=10) {
+                             $position_change="UPDATE `posts` SET `post_position`= 0 WHERE `post_id`='$post_id'";
+                             $rposition =mysqli_query($con,$position_change);
+                        }
+        
                     $user2="SELECT * FROM `users` WHERE id ='$user_id' AND posts='yes'";
                     $run_user=mysqli_query($con,$user2);
                     $row_user=mysqli_fetch_array($run_user);
@@ -95,13 +101,14 @@ function village(){
                                 <h6 class='mx-1 my-0'>
                                 <strong>$post_title</strong></h6>
                                 <p class='mx-1 my-1'>$post_content</p>
-                                <a href='single_post.php?post_id=$post_id' class='badge badge-pill badge-dark'>. . more</a> 
+                                 
                             </div>
                             <hr>
                             <div class='btn-group btn-block py-0'>
                             <a href='vote.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-success px-4' role='button' aria-pressed='true'>VOTE $user_like</a>
                             <a href='vato.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-danger px-4' role='button' aria-pressed='true'>VATO $user_unlike</a>
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary' role='button' aria-pressed='true'>Comment</a>
+                            <a href='single_post.php?post_id=$post_id' class='btn btn-outline-info' role='button' aria-pressed='true'>Full view</a>
                             </div>
                             </div>
     </div>";
@@ -235,14 +242,13 @@ function timeline(){
                                 <p ><img src='postimg/$post_image' class='img-fluid'></p>
                                 <h6 class='mx-1 my-1'><strong>$post_title</strong></h6>
                                 <p class='mx-1 my-1'>$post_content</p>
-                                <a href='single_post.php?post_id=$post_id' class='badge badge-pill badge-dark'>. . more</a>
                                
                             </div>
                             <div class='btn-group btn-block'>
                             
-                            <a href='delete_post.php?post_id=$post_id' class='btn btn-outline-info' role='button' aria-pressed='true'>Delete</a>
-                            
+                            <a href='delete_post.php?post_id=$post_id' class='btn btn-outline-danger' role='button' aria-pressed='true'>Delete</a>   
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary' role='button' aria-pressed='true'>Comment</a>
+                            <a href='single_post.php?post_id=$post_id' class='btn btn-outline-info' role='button' aria-pressed='true'>Full view</a>
                             </div>
                             </div>
                             </div>
@@ -263,7 +269,7 @@ function home(){
     }
                     
                 
-        $get_post = "SELECT * FROM `posts` WHERE `user_country`='$country' AND `post_position`=1 ORDER BY 1 DESC LIMIT 20";
+        $get_post = "SELECT * FROM `posts` WHERE `user_country`='$country' AND `post_position`= 3 ORDER BY 1 DESC LIMIT 20";
                     $runs_post=mysqli_query($con,$get_post);
 
                     while($run_post=mysqli_fetch_array($runs_post)) {
@@ -278,17 +284,23 @@ function home(){
                         $like="SELECT post_id, SUM(`user_like`) AS user_like,sum(`user_unlike`)AS user_unlike FROM `like` WHERE `post_id`='$post_id' GROUP BY `post_id`";
 
                             
-                    $run_like=mysqli_query($con,$like);
-                    $row_like=mysqli_fetch_array($run_like);
+                        $run_like=mysqli_query($con,$like);
+                        $row_like=mysqli_fetch_array($run_like);
 
                         $user_like =$row_like['user_like'];
                         $user_unlike      =$row_like['user_unlike'];
 
-
-                        
-                    $user2="SELECT * FROM `users` WHERE id ='$user_id' AND posts='yes'";
-                    $run_user=mysqli_query($con,$user2);
-                    $row_user=mysqli_fetch_array($run_user);
+                        if ($user_like>=100 AND $user_unlike<=50) {
+                             $position_change="UPDATE `posts` SET `post_position`= 3 WHERE `post_id`='$post_id'";
+                             $rposition =mysqli_query($con,$position_change);
+                        }elseif ($user_like>=50 AND $user_unlike<=75) {
+                             $position_change="UPDATE `posts` SET `post_position`= 0 WHERE `post_id`='$post_id'";
+                             $rposition =mysqli_query($con,$position_change);
+                        }
+                            
+                        $user2="SELECT * FROM `users` WHERE id ='$user_id' AND posts='yes'";
+                        $run_user=mysqli_query($con,$user2);
+                        $row_user=mysqli_fetch_array($run_user);
 
                         $user_firstname     =$row_user['firstname'];
                         $user_lastname      =$row_user['lastname'];
@@ -308,13 +320,14 @@ function home(){
                                 <h6 class='mx-1 my-0'>
                                 <strong>$post_title</strong></h6>
                                 <p class='mx-1 my-1'>$post_content</p>
-                                <a href='single_post.php?post_id=$post_id' class='badge badge-pill badge-dark'>. . more</a> 
+                                
                             </div>
                             <hr>
                             <div class='btn-group btn-block py-0'>
                             <a href='vote.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-success px-4' role='button' aria-pressed='true'>VOTE $user_like</a>
                             <a href='vato.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-danger px-4' role='button' aria-pressed='true'>VATO $user_unlike</a>
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary' role='button' aria-pressed='true'>Comment</a>
+                            <a href='single_post.php?post_id=$post_id' class='btn btn-outline-info' role='button' aria-pressed='true'>Full view</a>
                             </div>
                             </div>
     </div>";
@@ -333,7 +346,7 @@ function city(){
     }
                     
                 
-        $get_post = "SELECT * FROM `posts` WHERE `user_country`='$country' AND`user_city`='$city' AND `post_position`=1 ORDER BY 1 DESC LIMIT 20";
+        $get_post = "SELECT * FROM `posts` WHERE `user_country`='$country' AND`user_city`='$city' AND `post_position`= 2 ORDER BY 1 DESC LIMIT 20";
                     $runs_post=mysqli_query($con,$get_post);
 
                     while($run_post=mysqli_fetch_array($runs_post)) {
@@ -344,7 +357,7 @@ function city(){
                         $post_image     =$run_post['post_image'];
                         $post_title     =$run_post['post_title'];
                         $post_content   =substr($run_post['post_content'],0,150);
-
+                          
                         $like="SELECT post_id, SUM(`user_like`) AS user_like,sum(`user_unlike`)AS user_unlike FROM `like` WHERE `post_id`='$post_id' GROUP BY `post_id`";
         
                         $run_like=mysqli_query($con,$like);
@@ -352,7 +365,15 @@ function city(){
 
                         $user_like        =$row_like['user_like'];
                         $user_unlike      =$row_like['user_unlike'];
-  position();
+
+                        if ($user_like>=50 AND $user_unlike<=30) {
+                             $position_change="UPDATE `posts` SET `post_position`= 3 WHERE `post_id`='$post_id'";
+                             $rposition =mysqli_query($con,$position_change);
+                        }elseif ($user_like>=30 AND $user_unlike<=50) {
+                             $position_change="UPDATE `posts` SET `post_position`= 0 WHERE `post_id`='$post_id'";
+                             $rposition =mysqli_query($con,$position_change);
+                        }
+                        
                         $user2="SELECT * FROM `users` WHERE id ='$user_id' AND posts='yes'";
                         $run_user=mysqli_query($con,$user2);
                         $row_user=mysqli_fetch_array($run_user);
@@ -374,45 +395,22 @@ function city(){
                             <h6 class='mx-1 my-0'>
                             <strong>$post_title</strong></h6>
                             <p class='mx-1 my-1'>$post_content</p>
-                            <a href='single_post.php?post_id=$post_id' class='badge badge-pill badge-dark'>. . more</a> 
+                            
                             </div>
                             <hr>
                             <div class='btn-group btn-block py-0'>
                             <a href='vote.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-success px-4' role='button' aria-pressed='true'>VOTE $user_like</a>
                             <a href='vato.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-danger px-4' role='button' aria-pressed='true'>VATO $user_unlike</a>
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary' role='button' aria-pressed='true'>Comment</a>
+                            <a href='single_post.php?post_id=$post_id' class='btn btn-outline-info' role='button' aria-pressed='true'>Full view</a>
                             </div>
                             </div>
                             </div>";
+                             
                     }
+              
                 }
 
-
 include('vote.php');
-function position(){
-    global $con;
-    global $post_id;
-    $post_position="SELECT post_id, SUM(`user_like`) AS user_like,sum(`user_unlike`)AS user_unlike FROM `like` WHERE `post_id`='102' GROUP BY `post_id`";
-
-     $runs_post_position =mysqli_query($con,$post_position);
-
-    $run_post_position  =mysqli_fetch_array($runs_post_position);
-
-        $user_likes        =$run_post_position['user_like']; 
-        $user_unlikes        =$run_post_position['user_unlike'];
-        if ($user_likes<=10 AND $user_unlikes>=5) {
-            $position_change="UPDATE `posts` SET `post_position`= 2 WHERE `post_id`='$post_id'";
-
-                $run_position =mysqli_query($con,$position_change);
-        } elseif ($user_likes>=50 AND $user_unlikes<=20) {
-            $position_change="UPDATE `posts` SET `post_position`= 2 WHERE `post_id`='$post_id'";
-
-                $run_position =mysqli_query($con,$position_change);
-        } elseif ($user_likes>=100 AND $user_unlikes>=40) {
-            $position_change="UPDATE `posts` SET `post_position`= 3 WHERE `post_id`='$post_id'";
-            
-            $run_position =mysqli_query($con,$position_change);
-        }
-    }   
 
 ?>

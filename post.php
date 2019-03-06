@@ -73,12 +73,11 @@ include("function.php");
                 <div class="form-group">
                     <label for="inputdefault">Title</label>
                     <input class="form-control" id="inputdefault" type="text" name="title" placeholder="Write a title . . . . . . "
-                        maxlength="150" required="1">
+                        maxlength="150">
                 </div>
                 <div class="form-group">
                     <label for="alsjdfsalf">Discription</label>
-                    <textarea class="form-control" name="content" id="alsjdfsalf" rows="7" placeholder="Write discription . . . . . ."
-                        required="1"></textarea>
+                    <textarea class="form-control" name="content" id="alsjdfsalf" rows="7" placeholder="Write discription . . . . . ."></textarea>
                 </div>
                 <div class="form-group">
                     <input name="upload" class="btn btn-primary pull-right" type="submit" value="Post to timeline">

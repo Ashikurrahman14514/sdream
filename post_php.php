@@ -50,8 +50,8 @@ include("includes/db_connection.php");
                 $fileNewName =uniqid('',true).".".$fileActualExt;
                 move_uploaded_file($post_image_tmp,"postimg/$fileNewName");
 
-                if ($fileNewName =='' or $post_title =='' or $post_content =='') {
-                    echo"<div class='alert alert-danger mt-2'><strong>djsaljfjl jfljsadljf l</strong></div>";
+                if ($fileNewName =='') {
+                    echo"<div class='alert alert-danger mt-2'><strong>Emty input file</strong></div>";
                     exit();
                     }else{
                         $insert ="INSERT INTO `posts`(`user_id`, `user_village`, `user_city`, `user_country`, `post_title`, `post_content`, `post_date`, `display`, `post_position`, `post_image`) VALUES ('$user_id','$user_village','$user_city','$user_country','$post_title','$post_content',NOW(),'yes','1','$fileNewName')";

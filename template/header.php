@@ -12,11 +12,12 @@
 </head>
 
 <body>
-
+<script>
+alert("City name =Your District, Village name =Your Upazila");
+</script>
     <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                
+            <a class="navbar-brand" href="index.php">
                 <strong class="">Ashikshetu</strong>
             </a>
             <button class="navbar-toggler text-white bg-success py-2" type="button" data-toggle="collapse" data-target="#toggler">
