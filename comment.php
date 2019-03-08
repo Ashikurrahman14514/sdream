@@ -14,3 +14,8 @@ $date=$row['date'];
 echo"
 <div>
 <h5>$com_name</h5><span>$date</span>
+<p>$com</p>
+</div>
+";
+}
+?>
