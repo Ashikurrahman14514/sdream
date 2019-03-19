@@ -104,7 +104,7 @@ function village(){
                                  
                             </div>
                             <hr>
-                            <div class='container btn-group btn-block py-0'>
+                            <div class='btn-group btn-block py-0'>
                             <a href='vote.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-success px-2' role='button' aria-pressed='true'>VOTE $user_like</a>
                             <a href='vato.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-danger px-2' role='button' aria-pressed='true'>VATO $user_unlike</a>
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary px-1' role='button' aria-pressed='true'>Comment</a>
@@ -170,7 +170,9 @@ function fullpost(){
                                 <p ><img src='postimg/$post_image' class='img-fluid'></p>
                                 <h6 class='mx-1 my-1'><strong>$post_title</strong></h6>
                                 <p class='mx-1 my-1'>$post_content</p>
-                               </div>
+                               
+                                 
+                            </div>
                             ";
                             echo"<form action='' method='post'> 
                                   <textarea class='my-2' name='comment' id='alsjdfsalf' rows='4' cols='40' placeholder='Write your comment' required='1'></textarea>
@@ -320,7 +322,7 @@ function home(){
                                 
                             </div>
                             <hr>
-                            <div class='container btn-group btn-block py-0'>
+                            <div class='btn-group btn-block py-0'>
                             <a href='vote.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-success px-2' role='button' aria-pressed='true'>VOTE $user_like</a>
                             <a href='vato.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-danger px-2' role='button' aria-pressed='true'>VATO $user_unlike</a>
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary px-1' role='button' aria-pressed='true'>Comment</a>
@@ -386,7 +388,8 @@ function city(){
                                 <img src='img/$user_image' width='60' height='60'>
                             </div>
                             <div>
-                                <h6><a href='x_user.php?u_id=$user_id' class='btn-outline-success px-0' aria-pressed='true'>$user_firstname $user_lastname</a></h6>                     <p>$post_date</p>
+                                <h6><a href='x_user.php?u_id=$user_id' class='btn-outline-success px-0' aria-pressed='true'>$user_firstname $user_lastname</a></h6>
+                                <p>$post_date</p>
                             </div>
                             <p ><img src='postimg/$post_image' class='img-fluid'></p>
                             <h6 class='mx-1 my-0'>
@@ -402,9 +405,12 @@ function city(){
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-info px-1' role='button' aria-pressed='true'>Full view</a>
                             </div>
                             </div>
-                            </div>";                           
-                    }           
+                            </div>";
+                             
+                    }
+              
                 }
+
 include('vote.php');
 
 ?>
