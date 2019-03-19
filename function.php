@@ -47,6 +47,7 @@ function village(){
         $country=$_GET['country'];
         $city=$_GET['city'];
         $village=$_GET['village'];
+        $uid=$_GET['uid'];
     }
                     
                 
@@ -105,8 +106,8 @@ function village(){
                             </div>
                             <hr>
                             <div class='btn-group btn-block py-0'>
-                            <a href='vote.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-success px-2' role='button' aria-pressed='true'>VOTE $user_like</a>
-                            <a href='vato.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-danger px-2' role='button' aria-pressed='true'>VATO $user_unlike</a>
+                            <a href='vote.php?user_id=$uid&post_id=$post_id' class='btn btn-outline-success px-2' role='button' aria-pressed='true'>VOTE $user_like</a>
+                            <a href='vato.php?user_id=$uid&post_id=$post_id' class='btn btn-outline-danger px-2' role='button' aria-pressed='true'>VATO $user_unlike</a>
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary px-1' role='button' aria-pressed='true'>Comment</a>
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-info px-1' role='button' aria-pressed='true'>Full view</a>
                             </div>
@@ -160,7 +161,7 @@ function fullpost(){
                                     <img src='img/$user_image' width='60' height='60'>
                                 </div>
                                 <div class='col-4 col-sm-7 col-md-8 col-lg-9 col-xl-9 px-0'>
-                                    <h6><a href='x_user.php?u_id=$user_id' class='btn-outline-success px-0' aria-pressed='true'>$user_firstname $user_lastname</a></h6>                     
+                                    <h6><a href='x_user.php?u_id=$user_id' class='btn-outline-success px-0' aria-pressed='true'>$user_firstname $user_lastname</a></h6>    
                                     <p>$post_date</p>
                                 </div>
                                 <div class='col-5 col-sm-3 col-md-2 col-lg-2 col-xl-2 px-0'>
@@ -169,9 +170,7 @@ function fullpost(){
                                 </div>
                                 <p ><img src='postimg/$post_image' class='img-fluid'></p>
                                 <h6 class='mx-1 my-1'><strong>$post_title</strong></h6>
-                                <p class='mx-1 my-1'>$post_content</p>
-                               
-                                 
+                                <p class='mx-1 my-1'>$post_content</p>    
                             </div>
                             ";
                             echo"<form action='' method='post'> 
@@ -183,7 +182,7 @@ function fullpost(){
                             if(isset($_POST['reply'])){
 
                                 $comment =$_POST['comment'];
-                                $insurt="INSERT INTO `comment`(`post_id`,`user_id`,`comment`,`comment_auther`,`date`) VALUES ('$get_id','$user_com_id','$comment','$user_firstname $user_lastname',NOW())";
+                                $insurt="INSERT INTO `comment`(`post_id`,`user_id`,`comment`,`comment_auther`,`date`) VALUES ('$get_id','$user_com_id','$comment','$user_com_firstname $user_com_lastname',NOW())";
                                 $run=mysqli_query($con,$insurt);
                                 echo'You reply was added !';
                             }
@@ -198,13 +197,9 @@ function timeline(){
 
     if(isset($_GET['u_id'])) {
         $u_id=$_GET['u_id'];
-
-    }
-                    
-                
+    }         
         $get_post = "SELECT * FROM `posts` WHERE `user_id`='$u_id' ORDER BY 1 DESC LIMIT 10";
                     $runs_post=mysqli_query($con,$get_post);
-
                     while($run_post=mysqli_fetch_array($runs_post)) {
 
                         $post_id        =$run_post['post_id'];
@@ -265,9 +260,8 @@ function home(){
 
     if(isset($_GET['country'])) {
         $country=$_GET['country'];
-    }
-                    
-                
+        $uid=$_GET['uid'];
+    }       
         $get_post = "SELECT * FROM `posts` WHERE `user_country`='$country' AND `post_position`= 3 ORDER BY 1 DESC LIMIT 20";
                     $runs_post=mysqli_query($con,$get_post);
 
@@ -323,18 +317,15 @@ function home(){
                             </div>
                             <hr>
                             <div class='btn-group btn-block py-0'>
-                            <a href='vote.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-success px-2' role='button' aria-pressed='true'>VOTE $user_like</a>
-                            <a href='vato.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-danger px-2' role='button' aria-pressed='true'>VATO $user_unlike</a>
+                            <a href='vote.php?user_id=$uid&post_id=$post_id' class='btn btn-outline-success px-2' role='button' aria-pressed='true'>VOTE $user_like</a>
+                            <a href='vato.php?user_id=$uid&post_id=$post_id' class='btn btn-outline-danger px-2' role='button' aria-pressed='true'>VATO $user_unlike</a>
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary px-1' role='button' aria-pressed='true'>Comment</a>
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-info px-1' role='button' aria-pressed='true'>Full view</a>
                             </div>
                             </div>
     </div>";
-
                     }
                 }
-
-
 function city(){
 
     global $con;
@@ -342,6 +333,7 @@ function city(){
     if(isset($_GET['country'])) {
         $country=$_GET['country'];
         $city=$_GET['city'];
+        $uid=$_GET['uid'];
     }
                     
                 
@@ -399,8 +391,8 @@ function city(){
                             </div>
                             <hr>
                             <div class='btn-group btn-block py-0'>
-                            <a href='vote.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-success px-2' role='button' aria-pressed='true'>VOTE $user_like</a>
-                            <a href='vato.php?user_id=$user_id&post_id=$post_id' class='btn btn-outline-danger px-2' role='button' aria-pressed='true'>VATO $user_unlike</a>
+                            <a href='vote.php?user_id=$uid&post_id=$post_id' class='btn btn-outline-success px-2' role='button' aria-pressed='true'>VOTE $user_like</a>
+                            <a href='vato.php?user_id=$uid&post_id=$post_id' class='btn btn-outline-danger px-2' role='button' aria-pressed='true'>VATO $user_unlike</a>
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary px-1' role='button' aria-pressed='true'>Comment</a>
                             <a href='single_post.php?post_id=$post_id' class='btn btn-outline-info px-1' role='button' aria-pressed='true'>Full view</a>
                             </div>

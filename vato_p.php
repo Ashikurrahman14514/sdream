@@ -45,13 +45,16 @@ include("function.php")
 
             ?>
              <li style='list-style: none;'><a style="color:white;" href="home.php?country=<?php echo $user_country;
+           ?>&uid=<?php echo $user_id;
              ?>"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
              <li style='list-style: none;'><a style="color:white;" href="city.php?country=<?php echo $user_country;
              ?>&city=<?php echo $user_city;
+             ?>&uid=<?php echo $user_id;
              ?>"><i class="fa fa-building fa-lg"></i></a></li>
             <li style='list-style: none;'><a style="color:white;" href="village.php?country=<?php echo $user_country;
              ?>&city=<?php echo $user_city;
              ?>&village=<?php echo $user_village;
+             ?>&uid=<?php echo $user_id;
              ?>"><i  class="fa fa-child fa-lg"></i></a></li>
              <li style='list-style: none;'><a style="color:white;" href="my_message.php?"<i  class="fa fa-envelope fa-lg"></i></a></li>
             <li style='list-style: none;'><a style="color:white;" href="profile.php"><i class="fa fa-address-book fa-lg	"

@@ -37,7 +37,7 @@ if (mysqli_num_rows($query) > 0){
 
     
 
-    echo"<script>window.open('home.php?country=$user_country','_self')</script>";
+    echo"<script>window.open('home.php?country=$user_country&uid=$user_id','_self')</script>";
 }
     else{
         echo"<script>alert('Email or password incorrect,try again!')</script>";
