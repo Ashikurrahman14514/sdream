@@ -13,6 +13,27 @@ include("function.php");
     <link rel="stylesheet" href="style/style2.css">
     <link rel="stylesheet" href="bootstrap4/bootstrap4.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+    function fileValidation(){
+    var fileInput = document.getElementById('inputsm');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Please upload file having extensions .jpeg/.jpg/.png/.gif only.');
+        fileInput.value = '';
+        return false;
+    }else{
+        //Image preview
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+}
+</script>
 
 </head>
 
@@ -44,7 +65,9 @@ include("function.php");
 
             ?>
              <li style='list-style: none;'><a style="color:white;" href="home.php?country=<?php echo $user_country;
-           ?>&uid=<?php echo $user_id;
+             ?>&city=<?php echo $user_city;
+             ?>&village=<?php echo $user_village;
+             ?>&uid=<?php echo $user_id;
              ?>"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
              <li style='list-style: none;'><a style="color:white;" href="city.php?country=<?php echo $user_country;
              ?>&city=<?php echo $user_city;
@@ -71,8 +94,10 @@ include("function.php");
             <form method="POST" action="" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="inputsm">Image upload</label>
-                    <input class="form-control input-sm" id="inputsm" name="image" type="file" required="1">
+                    <input class="form-control input-sm" id="inputsm" name="image" type="file" required="1" onchange="return fileValidation()">
                 </div>
+                <div id="imagePreview"></div>
+
                 <div class="form-group">
                     <label for="inputdefault">Title</label>
                     <input class="form-control" id="inputdefault" type="text" name="title" placeholder="Write a title . . . . . . "

@@ -43,7 +43,9 @@ include("function.php");
 
             ?>
            <li style='list-style: none;'><a style="color:white;" href="home.php?country=<?php echo $user_country;
-           ?>&uid=<?php echo $user_id;
+             ?>&city=<?php echo $user_city;
+             ?>&village=<?php echo $user_village;
+             ?>&uid=<?php echo $user_id;
              ?>"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
              <li style='list-style: none;'><a style="color:white;" href="city.php?country=<?php echo $user_country;
              ?>&city=<?php echo $user_city;
@@ -61,7 +63,7 @@ include("function.php");
     </nav>
     
     <section class="mt-4 pt-1">
-            <?php village();?>
+            <?php home();?>
     </section>
 </body>
 <script src="bootstrap4/jquery.js"></script>

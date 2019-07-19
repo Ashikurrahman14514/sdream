@@ -43,8 +43,10 @@ include("function.php");
             $user_reg_date    =$row['reg_date'];
 
             ?>
-            <li style='list-style: none;'><a style="color:white;" href="home.php?country=<?php echo $user_country;
-           ?>&uid=<?php echo $user_id;
+            <li style='list-style: none;'><a style="color:white;" href="home.phpcountry=<?php echo $user_country;
+             ?>&city=<?php echo $user_city;
+             ?>&village=<?php echo $user_village;
+             ?>&uid=<?php echo $user_id;
              ?>"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
              <li style='list-style: none;'><a style="color:white;" href="city.php?country=<?php echo $user_country;
              ?>&city=<?php echo $user_city;

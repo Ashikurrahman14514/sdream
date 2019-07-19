@@ -254,10 +254,7 @@ function timeline(){
                 }
 
 function home(){
-
-    
     global $con;
-
     if(isset($_GET['country'])) {
         $country=$_GET['country'];
         $uid=$_GET['uid'];
