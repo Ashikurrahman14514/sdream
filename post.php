@@ -1,7 +1,6 @@
 <?php
 session_start();
 include("includes/db_connection.php");
-include("function.php");
 ?>
 <!DOCTYPE html>
 <head>
@@ -19,7 +18,7 @@ include("function.php");
     var filePath = fileInput.value;
     var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
     if(!allowedExtensions.exec(filePath)){
-        alert('Please upload file having extensions .jpeg/.jpg/.png/.gif only.');
+        alert('Sorry, only JPG, JPEG, PNG files are allowed.');
         fileInput.value = '';
         return false;
     }else{
@@ -122,8 +121,65 @@ include("function.php");
 
         <div class="container">
             <?php
-                timeline();
-            ?>
+function timeline(){
+global $user_id;
+    global $con;        
+        $get_post = "SELECT * FROM `posts` WHERE `user_id`='$user_id' ORDER BY 1 DESC LIMIT 10";
+                    $runs_post=mysqli_query($con,$get_post);
+                    while($run_post=mysqli_fetch_array($runs_post)) {
+
+                        $post_id        =$run_post['post_id'];
+                        $user_id        =$run_post['user_id'];
+                        $post_date      =$run_post['post_date'];
+                        $post_image     =$run_post['post_image'];
+                        $post_title     =$run_post['post_title'];
+                        $post_content   =substr($run_post['post_content'],0,150);
+
+                        
+                    $user2="SELECT * FROM `users` WHERE id ='$user_id' AND posts='yes'";
+                    $run_user=mysqli_query($con,$user2);
+                    $row_user=mysqli_fetch_array($run_user);
+
+                        $user_firstname     =$row_user['firstname'];
+                        $user_lastname      =$row_user['lastname'];
+                        $user_image         =$row_user['image'];
+
+
+                        echo"<div class='jumbotron jumbotron-fluid pt-0 mb-2'>
+                            <div class='container'>
+                        <div class='post row py-4'>
+                                <div class='col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1'>
+                                    <img src='img/$user_image' width='60' height='60'>
+                                </div>
+                                <div class='col-4 col-sm-7 col-md-8 col-lg-9 col-xl-9 px-0'>
+                                    <h6>$user_firstname $user_lastname</h6>                     
+                                    <p>$post_date</p>
+                                </div>
+                                <div class='col-5 col-sm-3 col-md-2 col-lg-2 col-xl-2 px-0'>
+                                    <p>UID:$user_id</p>
+                                    <p>PID:$post_id</p>
+                                </div>
+                                <p ><img src='postimg/$post_image' class='img-fluid'></p>
+                                <h6 class='mx-1 my-1'><strong>$post_title</strong></h6>
+                                <p class='mx-1 my-1'>$post_content</p>
+                               
+                            </div>
+                            <div class='btn-group btn-block'>
+                            
+                            <a href='delete_post.php?post_id=$post_id' class='btn btn-outline-danger' role='button' aria-pressed='true'>Delete</a>   
+                            <a href='single_post.php?post_id=$post_id' class='btn btn-outline-secondary' role='button' aria-pressed='true'>Comment</a>
+                            <a href='single_post.php?post_id=$post_id' class='btn btn-outline-info' role='button' aria-pressed='true'>Full view</a>
+                            </div>
+                            </div>
+                            </div>
+
+                            ";
+                            include("delete_post.php");
+
+                    }
+                }
+    timeline();
+    ?>
         </div>
 
     </div>

@@ -88,8 +88,7 @@ include("includes/db_connection.php");
                 <h6><strong>User id: <?php echo"$user_id";?><strong></h6>
             </div>
             <div class="span">
-             <a name="" id="" class="btn btn-success" href="timeline.php?u_id=<?php echo $user_id;
-             ?>" role="button">Timeline <i class="fa fa-file-text-o"></i></a>
+             <a name="" id="" class="btn btn-success" href="timeline.php?" role="button">Timeline <i class="fa fa-file-text-o"></i></a>
                 
             <a name="" id="" class="btn btn-info" href="edit_profile.php" role="button">Edit <i class="fa fa-edit"></i></a>
             

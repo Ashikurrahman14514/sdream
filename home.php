@@ -65,7 +65,7 @@ include("function.php");
  <section class="mt-4">
     <div class="jumbotron jumbotron-fluid mb-0 pt-4">
         <div class="container">
-        <a class="btn btn-primary pull-right " href="post.php?u_id=<?php echo$user_id;?>" role="button">Post</a>
+        <a class="btn btn-primary pull-right " href="post.php?" role="button">Post</a>
         </div>
     </div>
        </section>
